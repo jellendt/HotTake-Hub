@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Angular: Serve Frontend",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "pnpm --dir packages/frontend start"
+    },
+    {
+      "name": "Start Backend (Docker)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "docker compose -f packages/backend/docker-compose.yml up"
+    }
+  ]
+}

@@ -1,16 +1,18 @@
 {
-  "name": "Base-Setup",
+  "name": "HotTake-Hub",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "prepare": "husky",
-    "lint": "eslint ."
+    "lint": "pnpm --dir packages/frontend lint",
+    "lint:frontend": "pnpm --dir packages/frontend lint",
+    "format:backend": "dotnet format packages/backend/HotTake-Hub-Backend.slnx"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.30.3+sha512.c961d1e0a2d8e354ecaa5166b822516668b7f44cb5bd95122d590dd81922f606f5473b6d23ec4a5be05e7fcd18e8488d47d978bbe981872f1145d06e9a740017",
+  "packageManager": "pnpm@10.31.0+sha512.e3927388bfaa8078ceb79b748ffc1e8274e84d75163e67bc22e06c0d3aed43dd153151cbf11d7f8301ff4acb98c68bdc5cadf6989532801ffafe3b3e4a63c268",
   "private": true,
   "devDependencies": {
     "eslint": "^10.0.2",
@@ -18,8 +20,12 @@
     "lint-staged": "^16.3.0"
   },
   "lint-staged": {
-  "*": [
-    "node -e \"console.log('pre-commit ok (no project linter configured yet)')\""
-  ]
-}
+    "packages/frontend/**/*.{ts,html,scss,css,js,json}": [
+      "pnpm --dir packages/frontend exec eslint --fix",
+      "pnpm --dir packages/frontend exec prettier --write"
+    ],
+    "packages/backend/**/*.cs": [
+      "dotnet format packages/backend/HotTake-Hub-Backend.slnx --include"
+    ]
+  }
 }
