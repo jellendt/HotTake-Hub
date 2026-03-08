@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "docker-compose-up-backend",
+      "type": "shell",
+      "command": "docker compose -f packages/backend/docker-compose.yml up --build",
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "docker-compose-down-backend",
+      "type": "shell",
+      "command": "docker compose -f packages/backend/docker-compose.yml down",
+      "problemMatcher": []
+    }
+  ]
+}

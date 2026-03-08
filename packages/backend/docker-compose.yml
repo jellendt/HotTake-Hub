@@ -1,0 +1,16 @@
+services:
+  hottake-hub-backend:
+    image: ${DOCKER_REGISTRY-}hottakehubbackend
+    depends_on:
+      - sqlserver
+    build:
+      context: .
+      dockerfile: HotTake-Hub-Backend/Dockerfile
+  
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "DevPassword123!"
+    ports:
+      - "1433:1433"
