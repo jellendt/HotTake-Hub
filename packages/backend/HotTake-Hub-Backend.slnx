@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="HotTake-Hub-Tests/HotTake-Hub-Tests.csproj" Id="4c790c09-b8ca-47e2-bdaf-fea26ded4b7f" />
   <Project Path="docker-compose.dcproj">
     <Build />
   </Project>

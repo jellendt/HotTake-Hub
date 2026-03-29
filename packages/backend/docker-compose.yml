@@ -2,15 +2,16 @@ services:
   hottake-hub-backend:
     image: ${DOCKER_REGISTRY-}hottakehubbackend
     depends_on:
-      - sqlserver
+      - hottake-hub-sqlserver
     build:
       context: .
       dockerfile: HotTake-Hub-Backend/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=HotTakeHub;User Id=sa;Password=DevPassword123!
   
-  sqlserver:
+  hottake-hub-sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: "DevPassword123!"
-    ports:
-      - "1433:1433"
